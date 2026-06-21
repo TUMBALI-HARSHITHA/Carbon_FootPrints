@@ -32,7 +32,7 @@ describe('React Core UI Components', () => {
     
     // Verify XP is displayed
     expect(screen.getByText('ECO XP')).toBeInTheDocument();
-    expect(screen.getByText('120')).toBeInTheDocument();
+    expect(screen.getByText('120 XP')).toBeInTheDocument();
     expect(screen.getByText('2 Badges Unlocked')).toBeInTheDocument();
 
     // Click navigation button

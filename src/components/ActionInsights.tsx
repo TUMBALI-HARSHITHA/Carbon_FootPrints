@@ -4,12 +4,23 @@ import { Card } from './ui/Card';
 import { Button } from './ui/Button';
 import { Leaf, Check, Plus, AlertCircle } from 'lucide-react';
 
+/**
+ * Properties for the ActionInsights component
+ */
 interface ActionInsightsProps {
+  /** Array of actionable carbon recommendations */
   recommendations: Recommendation[];
+  /** Computed carbon emissions values per category */
   latestEmissions: CategoryEmissions;
+  /** Callback fired when a recommendation is toggled */
   toggleRecommendation: (id: string) => void;
 }
 
+/**
+ * Renders filterable green recommendations and offset summary tools
+ * @param props ActionInsights properties
+ * @returns React functional component
+ */
 export const ActionInsights: React.FC<ActionInsightsProps> = ({
   recommendations,
   latestEmissions,

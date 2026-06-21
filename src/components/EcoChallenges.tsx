@@ -4,12 +4,23 @@ import { Card } from './ui/Card';
 import { Button } from './ui/Button';
 import { CheckCircle, Zap } from 'lucide-react';
 
+/**
+ * Properties for the EcoChallenges component
+ */
 interface EcoChallengesProps {
+  /** Array of active eco-habit challenges */
   challenges: Challenge[];
+  /** Callback fired when a challenge tick status is toggled */
   toggleChallenge: (id: string) => void;
+  /** Cumulative experience points earned by the user */
   totalXp: number;
 }
 
+/**
+ * Renders daily eco-habits, progress checkers, and XP statistics
+ * @param props EcoChallenges properties
+ * @returns React functional component
+ */
 export const EcoChallenges: React.FC<EcoChallengesProps> = ({
   challenges,
   toggleChallenge,

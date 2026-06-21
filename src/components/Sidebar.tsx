@@ -1,16 +1,31 @@
 import React from 'react';
 import { LayoutDashboard, Calculator, Leaf, Award, Sun, Moon, Trash2 } from 'lucide-react';
 import type { UserStats } from '../utils/types';
+import { formatXp } from '../utils/format';
 
+/**
+ * Properties for the Sidebar component
+ */
 interface SidebarProps {
+  /** The currently active navigation view */
   activeTab: 'dashboard' | 'calculator' | 'insights' | 'challenges';
+  /** Callback to change the active tab */
   setActiveTab: (tab: 'dashboard' | 'calculator' | 'insights' | 'challenges') => void;
+  /** User stats containing total XP and unlocked badges list */
   stats: UserStats;
+  /** Current active theme state ('light' | 'dark') */
   theme: 'light' | 'dark';
+  /** Callback fired to switch light and dark modes */
   toggleTheme: () => void;
+  /** Callback fired to erase all logs and progress from localStorage */
   onReset: () => void;
 }
 
+/**
+ * Sidebar navigation panel presenting brand headers, user stats, and theme triggers
+ * @param props Sidebar properties
+ * @returns React functional component
+ */
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTab,
   setActiveTab,
@@ -36,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="sidebar-stats">
         <div className="xp-container">
           <span className="xp-label">ECO XP</span>
-          <span className="xp-value">{stats.totalXp}</span>
+          <span className="xp-value">{formatXp(stats.totalXp)}</span>
         </div>
         <div className="badge-count">
           <span>{stats.unlockedBadges.length} Badges Unlocked</span>

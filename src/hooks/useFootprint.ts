@@ -4,6 +4,10 @@ import type { FootprintData, LogEntry, Recommendation, Challenge, UserStats, Cat
 import { calculateEmissions, DEFAULT_FOOTPRINT_DATA } from '../utils/formulas';
 import { RECOMMENDATIONS_PRESET, CHALLENGES_PRESET } from '../utils/presets';
 
+/**
+ * Custom hook that serves as the main state manager and domain service for carbon data
+ * @returns State properties and interactive actions (saving data, toggling challenges/recommendations, data clearing)
+ */
 export function useFootprint() {
   const [activeTab, setActiveTab] = useLocalStorage<'dashboard' | 'calculator' | 'insights' | 'challenges'>('cf_active_tab', 'dashboard');
   const [logs, setLogs] = useLocalStorage<LogEntry[]>('cf_logs', []);

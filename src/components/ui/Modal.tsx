@@ -2,13 +2,25 @@ import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { Button } from './Button';
 
+/**
+ * Properties for the Modal component
+ */
 interface ModalProps {
+  /** If true, the modal container is rendered on top of the layout */
   isOpen: boolean;
+  /** Callback fired when the overlay is clicked or Escape is pressed */
   onClose: () => void;
+  /** Accessibility title label displayed in the modal header */
   title: string;
+  /** React child elements rendered in the modal content panel */
   children: React.ReactNode;
 }
 
+/**
+ * Reusable modal overlay component implementing ARIA structures
+ * @param props Modal properties
+ * @returns React functional component
+ */
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,

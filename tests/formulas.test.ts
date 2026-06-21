@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { calculateEmissions, DEFAULT_FOOTPRINT_DATA } from '../src/utils/formulas';
-import { FootprintData } from '../src/utils/types';
+import type { FootprintData } from '../src/utils/types';
+import { formatEmissions, formatXp } from '../src/utils/format';
 
 describe('Carbon Footprint Mathematical Formulas', () => {
   it('should calculate zero emissions for empty baseline inputs', () => {
@@ -85,5 +86,22 @@ describe('Carbon Footprint Mathematical Formulas', () => {
 
     const result = calculateEmissions(inputs);
     expect(result.waste).toBe(156); // 260 - 104 = 156
+  });
+
+  describe('Formatting Utilities', () => {
+    it('formats emissions under 1000 kg as kg', () => {
+      expect(formatEmissions(350)).toBe('350 kg');
+      expect(formatEmissions(999.4)).toBe('999 kg');
+    });
+
+    it('formats emissions 1000 kg or above as tonnes (t)', () => {
+      expect(formatEmissions(1000)).toBe('1.0 t');
+      expect(formatEmissions(4520)).toBe('4.5 t');
+    });
+
+    it('formats XP values correctly', () => {
+      expect(formatXp(0)).toBe('0 XP');
+      expect(formatXp(120)).toBe('120 XP');
+    });
   });
 });

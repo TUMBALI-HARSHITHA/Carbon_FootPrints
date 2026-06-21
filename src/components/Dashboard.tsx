@@ -4,13 +4,25 @@ import { Card } from './ui/Card';
 import { Button } from './ui/Button';
 import { Leaf, Award, Calendar, TrendingDown } from 'lucide-react';
 
+/**
+ * Properties for the Dashboard component
+ */
 interface DashboardProps {
+  /** Historical list of log entries */
   logs: LogEntry[];
+  /** Latest computed category emissions values */
   latestEmissions: CategoryEmissions;
+  /** List of unlocked badge identifiers */
   unlockedBadges: string[];
+  /** Callback to route to the multi-step calculator wizard */
   onStartCalculator: () => void;
 }
 
+/**
+ * Environmental impact summary dashboard presenting visual statistics
+ * @param props Dashboard properties
+ * @returns React functional component
+ */
 export const Dashboard: React.FC<DashboardProps> = ({
   logs,
   latestEmissions,

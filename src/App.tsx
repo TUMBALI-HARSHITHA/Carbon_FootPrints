@@ -10,6 +10,10 @@ import { Modal } from './components/ui/Modal';
 import { Award, Menu, X } from 'lucide-react';
 import { Button } from './components/ui/Button';
 
+/**
+ * Root component of the EcoTracker Application assembling page views
+ * @returns React functional component
+ */
 export const App: React.FC = () => {
   const {
     activeTab,

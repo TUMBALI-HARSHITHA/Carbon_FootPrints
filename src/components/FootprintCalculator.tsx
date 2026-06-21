@@ -5,14 +5,25 @@ import { Button } from './ui/Button';
 import { Card } from './ui/Card';
 import { Zap, Car, Utensils, Trash2, ArrowLeft, ArrowRight, Save, Info } from 'lucide-react';
 
+/**
+ * Properties for the FootprintCalculator component
+ */
 interface FootprintCalculatorProps {
+  /** Baseline or current footprint values to initialize the form */
   currentInputs: FootprintData;
+  /** Callback fired with updated footprint inputs when form is successfully saved */
   onSave: (data: FootprintData) => void;
+  /** Callback fired when user cancels form wizard inputs */
   onCancel: () => void;
 }
 
 type Step = 'energy' | 'transport' | 'food' | 'waste';
 
+/**
+ * Multi-step wizard form component to calculate individual carbon footprints
+ * @param props FootprintCalculator properties
+ * @returns React functional component
+ */
 export const FootprintCalculator: React.FC<FootprintCalculatorProps> = ({
   currentInputs,
   onSave,
