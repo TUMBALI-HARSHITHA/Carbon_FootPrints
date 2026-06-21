@@ -259,7 +259,7 @@ export const FootprintCalculator: React.FC<FootprintCalculatorProps> = ({
                     <select
                       id="carType"
                       value={formData.transport.carType}
-                      onChange={(e) => updateTransport('carType', e.target.value as any)}
+                      onChange={(e) => updateTransport('carType', e.target.value as 'petrol' | 'diesel' | 'hybrid' | 'electric')}
                     >
                       <option value="petrol">Petrol (Gasoline)</option>
                       <option value="diesel">Diesel</option>
@@ -327,7 +327,7 @@ export const FootprintCalculator: React.FC<FootprintCalculatorProps> = ({
                   <select
                     id="dietType"
                     value={formData.food.dietType}
-                    onChange={(e) => updateFood('dietType', e.target.value as any)}
+                    onChange={(e) => updateFood('dietType', e.target.value as 'heavy-meat' | 'low-meat' | 'vegetarian' | 'vegan')}
                   >
                     <option value="heavy-meat">Frequent Meat Eater (Daily Beef/Lamb/Pork)</option>
                     <option value="low-meat">Low Meat / Pescatarian (Poultry/Fish, rare beef)</option>

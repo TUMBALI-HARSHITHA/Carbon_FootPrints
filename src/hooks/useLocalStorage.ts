@@ -9,7 +9,21 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T 
     try {
       const item = window.localStorage.getItem(key);
       if (item) {
-        return JSON.parse(item) as T;
+        const parsed = JSON.parse(item);
+        // Security & Type Safety Check: Ensure the loaded item matches the type of initialValue
+        if (initialValue !== null && initialValue !== undefined) {
+          const expectedType = typeof initialValue;
+          const parsedType = typeof parsed;
+          if (expectedType !== parsedType) {
+            console.warn(`Type mismatch for localStorage key "${key}". Expected ${expectedType}, got ${parsedType}. Resetting.`);
+            return initialValue;
+          }
+          if (Array.isArray(initialValue) && !Array.isArray(parsed)) {
+            console.warn(`Type mismatch (array expected) for localStorage key "${key}". Resetting.`);
+            return initialValue;
+          }
+        }
+        return parsed as T;
       }
       return initialValue;
     } catch (error) {

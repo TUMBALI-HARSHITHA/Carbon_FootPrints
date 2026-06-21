@@ -111,7 +111,7 @@ export const ActionInsights: React.FC<ActionInsightsProps> = ({
           <select
             id="sort-select"
             value={sortCriteria}
-            onChange={(e) => setSortCriteria(e.target.value as any)}
+            onChange={(e) => setSortCriteria(e.target.value as 'savings' | 'difficulty')}
             aria-label="Sort recommendations criteria"
           >
             <option value="savings">CO₂ Savings (Highest)</option>
@@ -123,7 +123,7 @@ export const ActionInsights: React.FC<ActionInsightsProps> = ({
       {/* Recommendations Cards Grid */}
       <div className="recommendations-grid">
         {filteredRecommendations.map((rec) => {
-          let categoryClass = `rec-card-category border-${rec.category}`;
+          const categoryClass = `rec-card-category border-${rec.category}`;
           return (
             <Card
               key={rec.id}

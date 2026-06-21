@@ -71,7 +71,7 @@ export function useFootprint() {
     setLogs(prev => {
       // Overwrite if entry for today already exists, otherwise append
       const existingIndex = prev.findIndex(entry => entry.date === today);
-      let updatedLogs = [...prev];
+      const updatedLogs = [...prev];
       if (existingIndex >= 0) {
         updatedLogs[existingIndex] = newEntry;
       } else {

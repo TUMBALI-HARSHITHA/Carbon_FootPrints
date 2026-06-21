@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import type { FootprintData } from './utils/types';
 import { useFootprint } from './hooks/useFootprint';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './components/Dashboard';
@@ -68,7 +69,7 @@ export const App: React.FC = () => {
     setActiveTab('calculator');
   };
 
-  const handleSaveFootprint = (data: any) => {
+  const handleSaveFootprint = (data: FootprintData) => {
     saveFootprint(data);
     setActiveTab('dashboard');
   };

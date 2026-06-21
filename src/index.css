@@ -1450,3 +1450,24 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Accessibility Skip Link */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus-visible {
+  top: 20px;
+  outline: 3px solid var(--text-primary);
+  outline-offset: 2px;
+}
